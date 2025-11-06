@@ -1,0 +1,39 @@
+<div class="banner mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSZFod82SWiR4T4xq1obldaWVJriN3TMBrew&s">
+  <div class="container text-center">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+<div class="container bg-light">
+  <div class = "">
+    <h3>Films dans cette liste</h3>
+      <div class="movie-cards">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="card-product">
+            <%=image_tag bookmark.movie.poster_url, alt: bookmark.movie.title %>
+            <div class="card-product-infos">
+              <h4><%= bookmark.movie.title %> <span class="text-muted"> Note: <%= bookmark.movie.rating %></span></h4>
+              <p><strong>Synopsis:</strong> <%= bookmark.movie.overview %></p>
+              <p><strong>Votre commentaire:</strong> <em>"<%= bookmark.comment %>"</em></p>
+            </div>
+          </div>
+          <%= link_to "Supprimer", bookmark_path(bookmark),
+            data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" },
+            class: "btn btn-outline-danger my-1 " %>
+        <% end %>
+
+
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSZFod82SWiR4T4xq1obldaWVJriN3TMBrew&s)">
+          <h3>Ajouter un film à cette liste</h3>
+        </div>
+        <div class = "mb-2">
+          <%= simple_form_for [@list, @bookmark] do |f| %>
+            <%= f.association :movie, collection: Movie::MOVIES, prompt: false %>
+            <%= f.input :comment, placeholder: "Ajouter un commentaire (min 6 caractères)" %>
+            <%= f.submit "Ajouter le film", class: "btn btn-outline-primary mb-2" %>
+            <%= link_to "Voir toutes mes listes", lists_path, class: "btn btn-outline-secondary mb-2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

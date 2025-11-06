@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class = "my-4 text-center" >Mes Listes de Films</h1>
+
+  <ul>
+    <% @lists.each do |list| %>
+      <li>
+        <%= link_to list.name, list_path(list) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Créer une nouvelle liste", new_list_path, class: "btn btn-primary" %>
+</div>

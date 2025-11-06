@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class = "my-4 text-center" >Créer une nouvelle list</h2>
+
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name, placeholder: "Ex: Favoris, En cours, À voir..." %>
+    <%= f.submit "Sauvegarder", class: "btn btn-success my-2" %>
+  <% end %>
+
+  <%= link_to "Retour aux listes", lists_path, class: "btn btn-secondary mb-2" %>
+</div>
