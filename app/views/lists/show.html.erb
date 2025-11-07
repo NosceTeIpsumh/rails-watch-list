@@ -1,5 +1,9 @@
-<div class="container bg-light">
-  <div class = "">
+<% content_for :navbar_text_center do %>
+  <h1 class="text-center"><%= @list.name %></h1>
+<% end %>
+
+<div class="container bg-color-beige">
+  <div class = "my-2">
     <h3>Films dans cette liste</h3>
       <div class="movie-cards">
         <% @list.bookmarks.each do |bookmark| %>
@@ -15,11 +19,6 @@
             data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" },
             class: "btn btn-outline-danger my-1 " %>
         <% end %>
-
-
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSZFod82SWiR4T4xq1obldaWVJriN3TMBrew&s)">
-          <h3>Ajouter un film à cette liste</h3>
-        </div>
         <div class = "mb-2">
           <%= simple_form_for [@list, @bookmark] do |f| %>
             <%= f.association :movie, collection: Movie::MOVIES, prompt: false %>

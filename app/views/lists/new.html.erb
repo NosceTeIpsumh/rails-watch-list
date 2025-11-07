@@ -1,6 +1,8 @@
-<div class="container">
-  <h2 class = "my-4 text-center" >Créer une nouvelle list</h2>
+<% content_for :navbar_text_center do %>
+  <h1 class="text-center">Créer une nouvelle list!</h1>
+<% end %>
 
+<div class="container">
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name, placeholder: "Ex: Favoris, En cours, À voir..." %>
     <%= f.submit "Sauvegarder", class: "btn btn-success my-2" %>

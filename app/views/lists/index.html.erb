@@ -1,6 +1,8 @@
-<div class="container">
-  <h1 class = "my-4 text-center" >Mes Listes de Films</h1>
+<% content_for :navbar_text_center do %>
+  <h1 class="text-center">Vos listes !</h1>
+<% end %>
 
+<div class="container">
   <ul>
     <% @lists.each do |list| %>
       <li>
