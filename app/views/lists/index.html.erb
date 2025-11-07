@@ -1,13 +1,16 @@
 <% content_for :navbar_text_center do %>
-  <h1 class="text-center">Vos listes !</h1>
+  <h4 class="text-center text-muted nav-link mt-2">Vos listes !</h4>
 <% end %>
 
 <div class="container">
   <ul>
     <% @lists.each do |list| %>
-      <li>
-        <%= link_to list.name, list_path(list) %>
-      </li>
+        <div class="card-product mb-2">
+          <%=image_tag "cinema.png" %>
+          <div class="card-product-infos mb-2">
+              <h1 class = "text-center btn btn-outline-success"><%= link_to list.name, list_path(list)%></h1>
+          </div>
+        </div>
     <% end %>
   </ul>
 </div>

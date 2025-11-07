@@ -1,12 +1,12 @@
 <% content_for :navbar_text_center do %>
-  <h1 class="text-center">Créer une nouvelle list!</h1>
+  <h4 class="text-center text-muted nav-link mt-2">Créer une nouvelle list!</h4>
 <% end %>
 
 <div class="container">
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name, placeholder: "Ex: Favoris, En cours, À voir..." %>
-    <%= f.submit "Sauvegarder", class: "btn btn-success my-2" %>
+    <%= f.submit "Sauvegarder", class: "btn btn-outline-success my-2" %>
   <% end %>
 
-  <%= link_to "Retour aux listes", lists_path, class: "btn btn-secondary mb-2" %>
+  <%= link_to "Retour aux listes", lists_path, class: "btn btn-outline-secondary mb-2" %>
 </div>
